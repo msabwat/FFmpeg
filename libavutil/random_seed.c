@@ -80,7 +80,7 @@ static uint32_t get_generic_seed(void)
         memset(buffer, 0, sizeof(buffer));
         last_i = i = 0;
     }else{
-#ifdef AV_READ_TIME
+#if defined(AV_READ_TIME) && !defined(__EMSCRIPTEN__)
         buffer[13] ^= AV_READ_TIME();
         buffer[41] ^= AV_READ_TIME()>>32;
 #endif
@@ -106,7 +106,7 @@ static uint32_t get_generic_seed(void)
     if(TEST) {
         buffer[0] = buffer[1] = 0;
     } else {
-#ifdef AV_READ_TIME
+#if defined(AV_READ_TIME) && !defined(__EMSCRIPTEN__)
         buffer[111] += AV_READ_TIME();
 #endif
     }
