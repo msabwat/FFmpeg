@@ -4239,6 +4239,7 @@ fi
 exesuf() {
     case $1 in
         mingw32*|mingw64*|win32|win64|cygwin*|*-dos|freedos|opendos|os/2*|symbian) echo .exe ;;
+	emscripten) echo .js ;;
     esac
 }
 
@@ -5428,6 +5429,8 @@ case $target_os in
         ;;
     minix)
         ;;
+    emscripten)
+	;;
     none)
         ;;
     *)
